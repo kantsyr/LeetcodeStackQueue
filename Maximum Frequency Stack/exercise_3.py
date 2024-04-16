@@ -2,9 +2,10 @@ from collections import defaultdict, deque
 
 class FreqStack(object):
     def __init__(self):
+        self.queue = deque #use of the main structure - queue
         self.freq = defaultdict(int)
-        self.group = defaultdict(deque)
-        self.max_f = 0 #max frequency 
+        self.group = defaultdict(self.queue)
+        self.max_f = 0 #max frequency
 
     def push(self, value):
         """
