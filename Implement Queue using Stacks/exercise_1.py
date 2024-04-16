@@ -1,29 +1,29 @@
 class Node:
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, data):
+        self.data = data
         self.next = None
 
 class MyQueue(object):
     def __init__(self):
-        self.stack = None
+        self.head = None
 
     def push(self, x):
         """
         :type x: int
         :rtype: None
         """
-        if self.stack is None:
-            self.stack = Node(x)
+        if self.head is None:
+            self.head = Node(x)
         else:
             new_n = Node(x)
-            new_n.next = self.stack
-            self.stack = new_n
+            new_n.next = self.head
+            self.head = new_n
 
     def pop(self):
         """
         :rtype: int
         """
-        current = self.stack
+        current = self.head
         previous = None
 
         while current.next is not None:
@@ -33,23 +33,23 @@ class MyQueue(object):
         if previous is not None:
             previous.next = None
         else:
-            self.stack = None
+            self.head = None
 
-        return current.value
+        return current.data
 
     def peek(self):
         """
         :rtype: int
         """
-        current = self.stack
+        current = self.head
 
         while current.next is not None:
             current = current.next
 
-        return current.value
+        return current.data
 
     def empty(self):
         """
         :rtype: bool
         """
-        return not self.stack
+        return self.head is None
